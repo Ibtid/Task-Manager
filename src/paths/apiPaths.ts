@@ -1,13 +1,6 @@
 const ApiPaths = {
-  Auth: {
-    Login: '/auth/login',
-    Refresh: '/auth/refresh',
-    Profile: '/auth/profile',
-    Forget: '/auth/forgotPassword',
-    Reset: '/auth/resetPassword',
-    Change: '/auth/changePassword',
-    Logout: '/auth/logout',
-  },
+  GetTasksWithUserId:'users/1/todos',
+  AddTask:''
 };
 
 export default ApiPaths;
