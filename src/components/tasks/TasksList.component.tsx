@@ -4,10 +4,12 @@ import sortIcon from "../../img/sort.svg";
 import SortByStatusDropdown from "../common/dropdowns/SortByStatus.dropdown";
 import SortByDateDropdown from "../common/dropdowns/SortByDate.dropdown";
 import AddButton from "../common/buttons/add.button";
+import{ConfirmationCardModal} from "../../modals/index";
 
 export const TaskList: FC = () => {
   return (
     <Fragment>
+      <ConfirmationCardModal taskName={"Gardening"} onConfirm={()=>{}} onCancel={()=>{}}/>
       <header className="bg-gray-800 text-white p-4">
         <div className="container mx-auto flex justify-between items-center">
           <div className="text-2xl font-bold">Task Manager</div>

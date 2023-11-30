@@ -9,7 +9,7 @@ export const TaskCard: FC = () => {
     <Fragment>
       <div className="bg-slate-50 p-6 rounded-lg shadow-md max-w-lg mx-auto sm:max-w-xl lg:max-w-2xl xl:max-w-3xl">
         <div className="flex flex-col items-center justify-between lg:flex-row mb-6">
-          <div className="text-2xl lg:text-3xl font-semibold mb-4">Water Plants</div>
+          <div className="text-2xl lg:text-3xl font-semibold mb-4 lg:mb-0">Water Plants</div>
           <div className="flex items-center text-xs md:text-sm">
             <div className="bg-gray-200 pt-1 pb-1 pr-2 pl-2 text rounded-l-md flex items-center">
               <img
