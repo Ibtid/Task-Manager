@@ -1,10 +1,10 @@
 import React, { FC, Fragment, useState } from "react";
 import useForm from "../../hooks/useForm";
 
-const AddTaskForm: FC = () => {
+const EditTaskForm: FC = () => {
   const { formData, formErrors, handleChange, validateForm } = useForm({
-    title: "",
-    description: "",
+    title: "Garden",
+    description: "I need to water everyday",
     selectedDate: "",
     status: "To Do",
   });
@@ -23,7 +23,7 @@ const AddTaskForm: FC = () => {
     <Fragment>
     <div className="flex items-center justify-center min-h-screen">
       <div className="bg-slate-50 shadow-md rounded-md p-8 w-full max-w-md mb-80 sm:mb-20">
-        <h2 className="text-2xl font-bold mb-4">Add Task</h2>
+        <h2 className="text-2xl font-bold mb-4">Edit Task</h2>
         <form onSubmit={handleSubmit} className="max-w-md">
           <div className="mb-4">
             <label
@@ -106,7 +106,7 @@ const AddTaskForm: FC = () => {
               type="submit"
               className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline-blue"
             >
-              Add
+              Edit
             </button>
           </form>
         </div>
@@ -115,4 +115,4 @@ const AddTaskForm: FC = () => {
   );
 };
 
-export default AddTaskForm;
+export default EditTaskForm;

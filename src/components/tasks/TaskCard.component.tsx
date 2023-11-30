@@ -3,8 +3,11 @@ import calender from "../../img/calender.svg";
 import OngoingButton from "../common/buttons/ongoing.button";
 import EditButton from "../common/buttons/edit.buttons";
 import DeleteButton from "../common/buttons/delete.button";
+import UiPaths from "../../paths/uiPaths";
+import { useNavigate } from "react-router-dom";
 
 export const TaskCard: FC = () => {
+  let navigate = useNavigate()
   return (
     <Fragment>
       <div className="bg-slate-50 p-6 rounded-lg shadow-md max-w-lg mx-auto sm:max-w-xl lg:max-w-2xl xl:max-w-3xl">
@@ -26,7 +29,7 @@ export const TaskCard: FC = () => {
         <div className="text-gray-700 mb-8 text-md md:text-lg">Mother is out for a week. I should not forget to water plants</div>
         <div className="flex flex-row items-center">
           <OngoingButton/>
-          <EditButton/>
+          <EditButton onClick={()=>{navigate(UiPaths.EditTask)}}/>
           <DeleteButton/>
         </div>
       </div>

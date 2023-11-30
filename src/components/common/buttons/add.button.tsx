@@ -2,10 +2,8 @@ import React, { FC } from "react";
 import addIcon from "../../../img/add.svg";
 import { useNavigate } from "react-router-dom";
 import UiPaths from "../../../paths/uiPaths";
+import { IButton } from "../../../interfaces/button";
 
-interface IButton{
-  onClick:()=>void
-}
 
 const AddButton:FC<IButton> = ({onClick}) => {
   let navigate = useNavigate()
