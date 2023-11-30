@@ -1,8 +1,16 @@
-import React from "react";
+import React, { FC } from "react";
 import addIcon from "../../../img/add.svg";
-const AddButton = () => {
+import { useNavigate } from "react-router-dom";
+import UiPaths from "../../../paths/uiPaths";
+
+interface IButton{
+  onClick:()=>void
+}
+
+const AddButton:FC<IButton> = ({onClick}) => {
+  let navigate = useNavigate()
   return (
-    <button className="flex items-center text-white font-semibold border-2 border-white py-2 px-2 sm:px-3 rounded cursor-pointer transition duration-300 ease-in-out hover:bg-blue-600 sm:mr-4">
+    <button onClick={()=>navigate(UiPaths.AddTask)} className="flex items-center text-white font-semibold border-2 border-white py-2 px-2 sm:px-3 rounded cursor-pointer transition duration-300 ease-in-out hover:bg-blue-600 sm:mr-4">
     <img
       src={addIcon}
       alt="add"

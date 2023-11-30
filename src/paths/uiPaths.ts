@@ -1,5 +1,6 @@
 const UiPaths = {
-  TasksList:'/tasks/list'
+  TasksList:'/list',
+  AddTask: '/add'
 };
 
 export default UiPaths;

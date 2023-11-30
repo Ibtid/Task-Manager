@@ -1,9 +1,7 @@
 import { FC, Fragment } from "react";
 import { TaskCard } from "./TaskCard.component";
-import sortIcon from "../../img/sort.svg";
 import SortByStatusDropdown from "../common/dropdowns/SortByStatus.dropdown";
 import SortByDateDropdown from "../common/dropdowns/SortByDate.dropdown";
-import AddButton from "../common/buttons/add.button";
 import{ConfirmationCardModal} from "../../modals/index";
 
 export const TaskList: FC = () => {
