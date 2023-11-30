@@ -3,8 +3,12 @@ import { TaskCard } from "./TaskCard.component";
 import SortByStatusDropdown from "../common/dropdowns/SortByStatus.dropdown";
 import SortByDateDropdown from "../common/dropdowns/SortByDate.dropdown";
 import{ConfirmationCardModal} from "../../modals/index";
+import { useSelector, useDispatch } from 'react-redux';
+import { addTodo, editTodo, deleteTodo, selectTodos } from '../../todosSlice';
+
 
 export const TaskList: FC = () => {
+  const todos = useSelector(selectTodos);
   return (
     <Fragment>
       {/* <ConfirmationCardModal taskName={"Gardening"} onConfirm={()=>{}} onCancel={()=>{}}/> */}
@@ -18,12 +22,9 @@ export const TaskList: FC = () => {
         </div>
       </div>
       <div className="container mx-auto grid grid-cols-1 gap-4 xl:grid-cols-3 lg:grid-cols-2 sm:grid-cols-2 p-4">
-        <TaskCard />
-        <TaskCard />
-        <TaskCard />
-        <TaskCard />
-        <TaskCard />
-        <TaskCard />
+        {todos.map((todo)=>(
+          <TaskCard/>
+        ))}
       </div>
     </Fragment>
   );
