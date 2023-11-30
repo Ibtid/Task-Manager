@@ -5,8 +5,8 @@ interface Todo {
   id: number;
   title: string;
   description:string;
-  status: boolean;
-  due:Date;
+  status: string;
+  due:String;
 }
 
 interface TodosState {
@@ -14,7 +14,14 @@ interface TodosState {
 }
 
 const initialState: TodosState = {
-  todos: [],
+  todos: [
+    {id:1,title:'Play Games',description:'I need to join my friends for a match',status:'ongoing',due:'29 Mar, 2023'},
+    {id:2,title:'Play Games',description:'I need to join my friends for a match',status:'ongoing',due:'29 Mar, 2023'},
+    {id:3,title:'Play Games',description:'I need to join my friends for a match',status:'ongoing',due:'29 Mar, 2023'},
+    {id:4,title:'Play Games',description:'I need to join my friends for a match',status:'ongoing',due:'29 Mar, 2023'},
+    {id:5,title:'Play Games',description:'I need to join my friends for a match',status:'ongoing',due:'29 Mar, 2023'},
+
+  ],
 };
 
 const todosSlice = createSlice({
