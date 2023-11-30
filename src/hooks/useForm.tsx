@@ -40,13 +40,13 @@ const useForm = (initialState: FormData): FormHook => {
     let valid = true;
     const newErrors: FormErrors = { title: '', description: '', selectedDate: '' };
 
-    if (formData.title.trim() === '' || formData.title.length > 15) {
-      newErrors.title = 'Title is required and should be less than 15 characters';
+    if (formData.title.trim() === '' || formData.title.length > 12) {
+      newErrors.title = 'Title is required and should be less than 12 characters';
       valid = false;
     }
 
-    if (formData.description.trim() === '' || formData.description.length > 80) {
-      newErrors.description = 'Description is required and should be less than 80 characters';
+    if (formData.description.trim() === '' || formData.description.length > 40) {
+      newErrors.description = 'Description is required and should be less than 40 characters';
       valid = false;
     }
 
