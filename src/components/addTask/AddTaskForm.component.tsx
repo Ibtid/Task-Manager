@@ -1,72 +1,24 @@
 import React, { FC, Fragment, useState } from "react";
+import useForm from "../../hooks/useForm";
 
 const AddTaskForm: FC = () => {
-  const [formData, setFormData] = useState({
-    title: "",
-    description: "",
-    selectedDate: "",
-    status: "To Do", // Default status
-  });
-
-  const [formErrors, setFormErrors] = useState({
-    title: "",
-    description: "",
-    selectedDate: "",
-  });
-
-  const validateForm = () => {
-    let valid = true;
-    const newErrors = { ...formErrors };
-
-    if (formData.title.trim() === "" || formData.title.length > 15) {
-      newErrors.title =
-        "Title is required and should be less than 15 characters";
-      valid = false;
-    } else {
-      newErrors.title = "";
-    }
-
-    if (
-      formData.description.trim() === "" ||
-      formData.description.length > 80
-    ) {
-      newErrors.description =
-        "Description is required and should be less than 80 characters";
-      valid = false;
-    } else {
-      newErrors.description = "";
-    }
-
-    if (!formData.selectedDate) {
-      newErrors.selectedDate = "Please select a date";
-      valid = false;
-    } else {
-      newErrors.selectedDate = "";
-    }
-
-    setFormErrors(newErrors);
-
-    return valid;
-  };
-
-  const handleSubmit = (e: any) => {
-    e.preventDefault();
-
-    if (validateForm()) {
-      // Process the form data (e.g., send it to a server)
-      console.log("Form is valid:", formData);
-    } else {
-      console.log("Form is not valid");
-    }
-  };
-
-  const handleChange = (e: any) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-  };
+    const { formData, formErrors, handleChange, validateForm } = useForm({
+        title: '',
+        description: '',
+        selectedDate: '',
+        status: 'To Do',
+      });
+    
+      const handleSubmit = (e: any) => {
+        e.preventDefault();
+    
+        if (validateForm()) {
+          // Process the form data (e.g., send it to a server)
+          console.log('Form is valid:', formData);
+        } else {
+          console.log('Form is not valid');
+        }
+      };
   return (
     <Fragment>
       <div className="container mx-auto mt-8 p-4 sm:p-0">
