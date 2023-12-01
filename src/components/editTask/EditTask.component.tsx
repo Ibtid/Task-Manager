@@ -19,106 +19,107 @@ const EditTaskForm: FC = () => {
     selectedDate: task!.due,
     status: task!.status,
   });
-  const [loading, setLoading] = useState<Boolean>(false)
-  const navigate =useNavigate()
+  const [loading, setLoading] = useState<Boolean>(false);
+  const navigate = useNavigate();
   const handleSubmit = async (e: any) => {
     e.preventDefault();
 
     if (validateForm()) {
-      setLoading(true)
-      let editedTodo:ITask={
-        title:formData.title,
-        description:formData.description,
-        status:formData.status,
-        id:task!.id,
-        due:formData.selectedDate
-
-      }
+      setLoading(true);
+      let editedTodo: ITask = {
+        title: formData.title,
+        description: formData.description,
+        status: formData.status,
+        id: task!.id,
+        due: formData.selectedDate,
+      };
       let bodyForDummyApi = {
         userId: 1,
         id: 1,
         title: "delectus aut autem",
         completed: false,
       };
-      let response =await dispatch({ action: actions.editTask,
-      headerParams: {},
-      body: bodyForDummyApi,
-      token: '',})
+      let response = await dispatch({
+        action: actions.editTask,
+        headerParams: {},
+        body: bodyForDummyApi,
+        token: "",
+      });
       console.log(response);
-      if(response.data){
+      if (response.data) {
         dispatchTodo(editTodo(editedTodo));
-        navigate(UiPaths.TasksList)
+        navigate(UiPaths.TasksList);
       }
-      setLoading(false)
+      setLoading(false);
     } else {
       console.log("Form is not valid");
     }
   };
   return (
     <Fragment>
-      {loading && <Spinkit/>}
-    <div className="flex items-center justify-center min-h-screen">
-      <div className="bg-slate-50 shadow-md rounded-md p-8 w-full max-w-md mb-80 sm:mb-20">
-        <h2 className="text-2xl font-bold mb-4">Edit Task</h2>
-        <form onSubmit={handleSubmit} className="max-w-md">
-          <div className="mb-4">
-            <label
-              htmlFor="title"
-              className="block text-lg font-medium text-gray-700"
-            >
-              Title:
-            </label>
-            <input
-              type="text"
-              id="title"
-              name="title"
-              value={formData.title}
-              onChange={handleChange}
-              className="mt-1 p-2 border-2 rounded-md w-full"
-            />
-            <span className="text-red-500 text-xs">{formErrors.title}</span>
-          </div>
+      {loading && <Spinkit />}
+      <div className="flex items-center justify-center min-h-screen">
+        <div className="bg-slate-50 shadow-md rounded-md p-8 w-full max-w-md mb-80 sm:mb-20">
+          <h2 className="text-2xl font-bold mb-4">Edit Task</h2>
+          <form onSubmit={handleSubmit} className="max-w-md">
+            <div className="mb-4">
+              <label
+                htmlFor="title"
+                className="block text-lg font-medium text-gray-700"
+              >
+                Title:
+              </label>
+              <input
+                type="text"
+                id="title"
+                name="title"
+                value={formData.title}
+                onChange={handleChange}
+                className="mt-1 p-2 border-2 rounded-md w-full"
+              />
+              <span className="text-red-500 text-xs">{formErrors.title}</span>
+            </div>
 
-          <div className="mb-4">
-            <label
-              htmlFor="description"
-              className="block text-lg font-medium text-gray-700"
-            >
-              Description:
-            </label>
-            <textarea
-              id="description"
-              name="description"
-              value={formData.description}
-              onChange={handleChange}
-              className="mt-1 p-2 border-2 rounded-md w-full"
-            />
-            <span className="text-red-500 text-xs">
-              {formErrors.description}
-            </span>
-          </div>
+            <div className="mb-4">
+              <label
+                htmlFor="description"
+                className="block text-lg font-medium text-gray-700"
+              >
+                Description:
+              </label>
+              <textarea
+                id="description"
+                name="description"
+                value={formData.description}
+                onChange={handleChange}
+                className="mt-1 p-2 border-2 rounded-md w-full"
+              />
+              <span className="text-red-500 text-xs">
+                {formErrors.description}
+              </span>
+            </div>
 
-          <div className="mb-4">
-            <label
-              htmlFor="selectedDate"
-              className="block text-lg font-medium text-gray-700"
-            >
-              Select a Date:
-            </label>
-            <input
-              type="date"
-              id="selectedDate"
-              name="selectedDate"
-              value={formData.selectedDate}
-              onChange={handleChange}
-              className="mt-1 p-2 border-2 rounded-md w-full"
-            />
-            <span className="text-red-500 text-xs">
-              {formErrors.selectedDate}
-            </span>
-          </div>
+            <div className="mb-4">
+              <label
+                htmlFor="selectedDate"
+                className="block text-lg font-medium text-gray-700"
+              >
+                Select a Date:
+              </label>
+              <input
+                type="date"
+                id="selectedDate"
+                name="selectedDate"
+                value={formData.selectedDate}
+                onChange={handleChange}
+                className="mt-1 p-2 border-2 rounded-md w-full"
+              />
+              <span className="text-red-500 text-xs">
+                {formErrors.selectedDate}
+              </span>
+            </div>
 
-          <div className="mb-4">
+            <div className="mb-4">
               <label
                 htmlFor="status"
                 className="block text-lg font-medium text-gray-700"
