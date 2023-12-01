@@ -12,6 +12,7 @@ import { useSelector } from "react-redux";
 import { ConfirmationCardModal, Spinkit } from "../../modals";
 import dispatch from "../../dispatch/dispatch";
 import actions from "../../dispatch/actions";
+import { formatDate } from "../../utils/formateDate";
 
 export const TaskCard: FC<ITaskCardProps> = ({
   id,
@@ -77,7 +78,7 @@ export const TaskCard: FC<ITaskCardProps> = ({
               <div className="hidden md:inline">Due</div>
             </div>
             <div className="bg-gray-100 pt-1 pb-1 pr-2 pl-2 rounded-r-md">
-              {due}
+              {formatDate(due)}
             </div>
           </div>
         </div>
@@ -88,6 +89,7 @@ export const TaskCard: FC<ITaskCardProps> = ({
           <StatusComponent status={status} />
           <EditButton
             onClick={() => {
+              console.log(due)
               let taskToBeEdited: ITask = {
                 title: title,
                 description: description,
