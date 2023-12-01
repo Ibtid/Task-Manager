@@ -7,35 +7,35 @@ const initialState: ITasksState = {
   todos: [
     {
       id: 1,
-      title: "Play Games",
+      title: "Play Games1",
       description: "I need to join my friends for a match",
       status: "todo",
       due: "2023-02-02",
     },
     {
       id: 2,
-      title: "Water Plants",
+      title: "Water Plants2",
       description: "I need to water my plants at evening",
       status: "completed",
       due: "2023-02-02",
     },
     {
-      id: 4,
-      title: "Play Games",
+      id: 3,
+      title: "Play Games3",
       description: "I need to join my friends for a match",
       status: "in progress",
       due: "2023-02-02",
     },
     {
-      id: 3,
-      title: "Do Homework",
+      id: 4,
+      title: "Do Homework4",
       description: "I need to complete by Homework by saturday",
       status: "completed",
       due: "2023-02-02",
     },
     {
       id: 5,
-      title: "Play Games",
+      title: "Play Games5",
       description: "I need to join my friends for a match",
       status: "todo",
       due: "2023-02-02",
@@ -80,8 +80,8 @@ const todosSlice = createSlice({
       const deletedTodoId = action.payload;
 
       // Use filter to create a new array without the deleted todo
-      const task = state.todos.filter((todo) => todo.id === deletedTodoId);
-      state.todos.pop()
+      state.todos = state.todos.filter((todo) => todo.id !== deletedTodoId);
+      
     },
   },
 });

@@ -47,14 +47,14 @@ export const TaskList: FC = () => {
         </div>
       </div>
       <div className="container mx-auto grid grid-cols-1 gap-4 xl:grid-cols-3 lg:grid-cols-2 sm:grid-cols-2 p-4">
-        {tasks.map((todo) => (
+        {tasks.map((task) => (
           <TaskCard
-            title={todo.title}
-            status={todo.status}
-            key={todo.id}
-            id={todo.id}
-            description={todo.description}
-            due={todo.due}
+            title={task.title}
+            status={task.status}
+            key={task.id}
+            id={task.id}
+            description={task.description}
+            due={task.due}
           />
         ))}
       </div>
