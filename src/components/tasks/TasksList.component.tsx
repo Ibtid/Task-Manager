@@ -1,13 +1,32 @@
-import { FC, Fragment } from "react";
+import { FC, Fragment, useEffect } from "react";
 import { TaskCard } from "./TaskCard.component";
 import SortByStatusDropdown from "../common/dropdowns/SortByStatus.dropdown";
 import SortByDateDropdown from "../common/dropdowns/SortByDate.dropdown";
 import { ConfirmationCardModal } from "../../modals/index";
 import { useSelector, useDispatch } from "react-redux";
 import { addTodo, editTodo, deleteTodo, selectTodos } from "../../todosSlice";
+import dispatch from "../../dispatch/dispatch";
+import actions from "../../dispatch/actions";
 
 export const TaskList: FC = () => {
   const todos = useSelector(selectTodos);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const taskOptions = await dispatch({
+          action: actions.getTask, // Note the correction here
+          headerParams: {},
+          body: {},
+          token: '',
+        });
+        console.log(taskOptions);
+      } catch (error) {
+        console.error('Error fetching tasks:', error);
+      }
+    })();
+  }, []);
+
   return (
     <Fragment>
       {/* <ConfirmationCardModal taskName={"Gardening"} onConfirm={()=>{}} onCancel={()=>{}}/> */}
