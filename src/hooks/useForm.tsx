@@ -4,7 +4,7 @@ interface FormData {
   title: string;
   description: string;
   selectedDate: string;
-  status: string;
+  status: "todo" | "completed" | "in progress";
 }
 
 interface FormErrors {

@@ -5,14 +5,8 @@ import DeleteButton from "../common/buttons/delete.button";
 import UiPaths from "../../paths/uiPaths";
 import { useNavigate } from "react-router-dom";
 import StatusComponent from "../common/status/Status.component";
+import { ITaskCardProps } from "../../interfaces/task";
 
-interface ITaskCardProps{
-  id: number;
-  title: string;
-  description: string;
-  status: 'todo' | 'completed' | 'in progress';
-  due: String;
-}
 
 export const TaskCard: FC<ITaskCardProps> = ({id,title,description,status,due}) => {
   let navigate = useNavigate()

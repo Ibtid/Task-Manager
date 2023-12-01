@@ -6,7 +6,7 @@ const EditTaskForm: FC = () => {
     title: "Garden",
     description: "I need to water everyday",
     selectedDate: "",
-    status: "To Do",
+    status: "todo",
   });
 
   const handleSubmit = (e: any) => {
