@@ -1,19 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { act } from "react-dom/test-utils";
+import { ITask, ITasksState } from "./interfaces/task";
 
-interface Todo {
-  id: number;
-  title: string;
-  description: string;
-  status: 'todo' | 'completed' | 'in progress';
-  due: String;
-}
-
-interface TodosState {
-  todos: Todo[];
-}
-
-const initialState: TodosState = {
+const initialState: ITasksState = {
   todos: [
     {
       id: 1,
@@ -57,8 +46,8 @@ const todosSlice = createSlice({
   name: "todos",
   initialState,
   reducers: {
-    addTodo: (state, action: PayloadAction<Todo>) => {
-      const newTodo: Todo = {
+    addTodo: (state, action: PayloadAction<ITask>) => {
+      const newTodo: ITask = {
         id: action.payload.id,
         title: action.payload.title,
         status: action.payload.status,
@@ -67,7 +56,7 @@ const todosSlice = createSlice({
       };
       state.todos.push(newTodo);
     },
-    editTodo: (state, action: PayloadAction<Todo>) => {
+    editTodo: (state, action: PayloadAction<ITask>) => {
       const todo = state.todos.find((todo) => todo.id === action.payload.id);
       if (todo) {
         todo.title = action.payload.title;
@@ -83,6 +72,6 @@ const todosSlice = createSlice({
 });
 
 export const { addTodo, editTodo, deleteTodo } = todosSlice.actions;
-export const selectTodos = (state: { todos: TodosState }) => state.todos.todos;
+export const selectTodos = (state: { todos: ITasksState }) => state.todos.todos;
 
 export default todosSlice.reducer;
