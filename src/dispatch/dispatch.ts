@@ -53,7 +53,7 @@ const dispatch = async ({
       case actions.deleteTask:
         axiosOptions = getAxiosOptions(
           "DELETE",
-          `${urls.baseUrlRestApi}${ApiPaths.DeleteTask}`,
+          `${urls.baseUrlRestApi}${ApiPaths.DeleteTask}${body.id}`,
           body,
           token
         );
@@ -63,7 +63,7 @@ const dispatch = async ({
       case actions.editTask:
         axiosOptions = getAxiosOptions(
           "PUT",
-          `${urls.baseUrlRestApi}${ApiPaths.EditTask}`,
+          `${urls.baseUrlRestApi}${ApiPaths.EditTask}${body.id}`,
           body,
           token
         );

@@ -1,26 +1,62 @@
 import React, { FC, Fragment, useState } from "react";
 import useForm from "../../hooks/useForm";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { ITask } from "../../interfaces/task";
+import dispatch from "../../dispatch/dispatch";
+import actions from "../../dispatch/actions";
+import { editTodo, selectedTask } from "../../todosSlice";
+import UiPaths from "../../paths/uiPaths";
+import { useSelector } from "react-redux";
+import { Spinkit } from "../../modals";
 
 const EditTaskForm: FC = () => {
+  const task = useSelector(selectedTask);
+  const dispatchTodo = useDispatch();
   const { formData, formErrors, handleChange, validateForm } = useForm({
-    title: "Garden",
-    description: "I need to water everyday",
-    selectedDate: "",
-    status: "todo",
+    title: task!.title,
+    description: task!.description,
+    selectedDate: task!.due,
+    status: task!.status,
   });
-
-  const handleSubmit = (e: any) => {
+  const [loading, setLoading] = useState<Boolean>(false)
+  const navigate =useNavigate()
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
 
     if (validateForm()) {
-      // Process the form data (e.g., send it to a server)
-      console.log("Form is valid:", formData);
+      setLoading(true)
+      let editedTodo:ITask={
+        title:formData.title,
+        description:formData.description,
+        status:formData.status,
+        id:task!.id,
+        due:formData.selectedDate
+
+      }
+      let bodyForDummyApi = {
+        userId: 1,
+        id: 1,
+        title: "delectus aut autem",
+        completed: false,
+      };
+      let response =await dispatch({ action: actions.editTask,
+      headerParams: {},
+      body: bodyForDummyApi,
+      token: '',})
+      console.log(response);
+      if(response.data){
+        dispatchTodo(editTodo(editedTodo));
+        navigate(UiPaths.TasksList)
+      }
+      setLoading(false)
     } else {
       console.log("Form is not valid");
     }
   };
   return (
     <Fragment>
+      {loading && <Spinkit/>}
     <div className="flex items-center justify-center min-h-screen">
       <div className="bg-slate-50 shadow-md rounded-md p-8 w-full max-w-md mb-80 sm:mb-20">
         <h2 className="text-2xl font-bold mb-4">Edit Task</h2>

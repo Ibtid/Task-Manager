@@ -5,11 +5,15 @@ import DeleteButton from "../common/buttons/delete.button";
 import UiPaths from "../../paths/uiPaths";
 import { useNavigate } from "react-router-dom";
 import StatusComponent from "../common/status/Status.component";
-import { ITaskCardProps } from "../../interfaces/task";
+import { ITask, ITaskCardProps } from "../../interfaces/task";
+import { useDispatch } from "react-redux";
+import { selectTask, selectedTask } from "../../todosSlice";
+import { useSelector } from "react-redux";
 
 
 export const TaskCard: FC<ITaskCardProps> = ({id,title,description,status,due}) => {
   let navigate = useNavigate()
+  let dispatchTodo = useDispatch()
   return (
     <Fragment>
       <div className="flex flex-col justify-between bg-slate-50 p-6 rounded-lg shadow-md max-w-lg mx-auto sm:max-w-xl lg:max-w-2xl xl:max-w-3xl w-72 md:w-80 lg:w-96">
@@ -30,7 +34,17 @@ export const TaskCard: FC<ITaskCardProps> = ({id,title,description,status,due}) 
         <div className="text-gray-700 mb-8 text-md md:text-lg">{description}</div>
         <div className="flex flex-row items-center">
           <StatusComponent status={status}/>
-          <EditButton onClick={()=>{navigate(UiPaths.EditTask)}}/>
+          <EditButton onClick={()=>{
+            let taskToBeEdited:ITask = {
+              title:title,
+              description:description,
+              status:status,
+              id:id,
+              due:due
+            }
+            dispatchTodo(selectTask(taskToBeEdited));
+            navigate(UiPaths.EditTask)
+            }}/>
           <DeleteButton/>
         </div>
       </div>

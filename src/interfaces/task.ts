@@ -3,11 +3,12 @@ export interface ITask {
   title: string;
   description: string;
   status: "todo" | "completed" | "in progress";
-  due: String;
+  due: string;
 }
 
 export interface ITasksState {
   todos: ITask[];
+  selectedTask:ITask|null
 }
 
 export interface ITaskCardProps{
@@ -15,5 +16,5 @@ export interface ITaskCardProps{
   title: string;
   description: string;
   status: 'todo' | 'completed' | 'in progress';
-  due: String;
+  due: string;
 }

@@ -3,6 +3,7 @@ import { act } from "react-dom/test-utils";
 import { ITask, ITasksState } from "./interfaces/task";
 
 const initialState: ITasksState = {
+  selectedTask: null,
   todos: [
     {
       id: 1,
@@ -19,12 +20,12 @@ const initialState: ITasksState = {
       due: "29 Aug, 2023",
     },
     {
-        id: 4,
-        title: "Play Games",
-        description: "I need to join my friends for a match",
-        status: "in progress",
-        due: "29 Mar, 2023",
-      },
+      id: 4,
+      title: "Play Games",
+      description: "I need to join my friends for a match",
+      status: "in progress",
+      due: "29 Mar, 2023",
+    },
     {
       id: 3,
       title: "Do Homework",
@@ -46,6 +47,16 @@ const todosSlice = createSlice({
   name: "todos",
   initialState,
   reducers: {
+    selectTask: (state, action: PayloadAction<ITask>) => {
+      const taskToBeEdited: ITask = {
+        id: action.payload.id,
+        title: action.payload.title,
+        status: action.payload.status,
+        description: action.payload.description,
+        due: action.payload.due,
+      };
+      state.selectedTask = taskToBeEdited
+    },
     addTodo: (state, action: PayloadAction<ITask>) => {
       const newTodo: ITask = {
         id: action.payload.id,
@@ -71,7 +82,9 @@ const todosSlice = createSlice({
   },
 });
 
-export const { addTodo, editTodo, deleteTodo } = todosSlice.actions;
+export const { addTodo, editTodo, deleteTodo, selectTask } = todosSlice.actions;
 export const selectTodos = (state: { todos: ITasksState }) => state.todos.todos;
+export const selectedTask = (state: { todos: ITasksState }) =>
+  state.todos.selectedTask;
 
 export default todosSlice.reducer;
