@@ -39,7 +39,7 @@ const AddTaskForm: FC = () => {
         title: "delectus aut autem",
         completed: false,
       };
-      let response =await dispatch({ action: actions.addTask, // Note the correction here
+      let response =await dispatch({ action: actions.addTask,
       headerParams: {},
       body: bodyForDummyApi,
       token: '',})
