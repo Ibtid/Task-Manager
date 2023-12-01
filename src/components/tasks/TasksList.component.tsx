@@ -8,6 +8,7 @@ import { selectTodos } from "../../todosSlice";
 import dispatch from "../../dispatch/dispatch";
 import actions from "../../dispatch/actions";
 import { ITask } from "../../interfaces/task";
+import { filterTasks } from "../../utils/filterTasks";
 
 export const TaskList: FC = () => {
   let todos: ITask[] = useSelector(selectTodos);
@@ -17,38 +18,6 @@ export const TaskList: FC = () => {
   const [selectedStatusOptions, setSelectedStatusOptions] = useState<string[]>(
     []
   );
-
-  const filterTasks = (
-    todos: ITask[],
-    selectedStatusOptions: string[],
-    selectedDateOptions: string[]
-  ): ITask[] => {
-    console.log(selectedDateOptions)
-    return todos.filter((todo) => {
-      const statusMatch = selectedStatusOptions.includes(todo.status);
-      console.log(statusMatch)
-      const dateMatch = selectedDateOptions.some((option) => {
-        const dueDate = new Date(todo.due);
-        const today = new Date();
-        switch (option) {
-          case "Due Today":
-            return dueDate.toDateString() === today.toDateString();
-          case "Over Due":
-            return dueDate < today;
-          case "Due in Future":
-            return dueDate > today;
-          default:
-            return false;
-        }
-      });
-      if(selectedDateOptions.length===0 && selectedStatusOptions.length!==0){
-        return statusMatch
-      } else if (selectedDateOptions.length!==0 && selectedStatusOptions.length===0){
-        return dateMatch
-      }else
-      return statusMatch && dateMatch;
-    });
-  };
 
   useEffect(() => {
     (async () => {
