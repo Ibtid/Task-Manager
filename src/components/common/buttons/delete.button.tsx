@@ -1,8 +1,9 @@
-import React from "react";
+import React, { FC } from "react";
 import deleteIcon from "../../../img/delete.svg";
-const DeleteButton = () => {
+import { IButton } from "../../../interfaces/button";
+const DeleteButton:FC<IButton> = ({onClick}) => {
   return (
-    <button className="text-sm flex items-center bg-red-500 text-white font-semibold py-2 px-2 sm:px-3 rounded cursor-pointer transition duration-300 ease-in-out hover:bg-red-600 mb-2 sm:mb-0 sm:mr-4">
+    <button onClick={onClick} className="text-sm flex items-center bg-red-500 text-white font-semibold py-2 px-2 sm:px-3 rounded cursor-pointer transition duration-300 ease-in-out hover:bg-red-600 mb-2 sm:mb-0 sm:mr-4">
     <img
       src={deleteIcon}
       alt="delete"

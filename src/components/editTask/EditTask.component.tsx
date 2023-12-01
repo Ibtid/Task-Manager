@@ -133,9 +133,9 @@ const EditTaskForm: FC = () => {
                 onChange={handleChange}
                 className="mt-1 p-2 border-2 rounded-md w-full focus:outline-none focus:border-blue-500"
               >
-                <option value="To Do">To Do</option>
-                <option value="In Progress">In Progress</option>
-                <option value="Done">Done</option>
+                <option value="todo">To Do</option>
+                <option value="in progress">In Progress</option>
+                <option value="completed">Done</option>
               </select>
             </div>
 

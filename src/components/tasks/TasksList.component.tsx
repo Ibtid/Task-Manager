@@ -37,7 +37,6 @@ export const TaskList: FC = () => {
   return (
     <Fragment>
       {loading && <Spinkit/>}
-      {/* <ConfirmationCardModal taskName={"Gardening"} onConfirm={()=>{}} onCancel={()=>{}}/> */}
       <div className="text-white p-4 mt-4">
         <div className="container mx-auto flex justify-between items-center">
           <div className=""></div>
