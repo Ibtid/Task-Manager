@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import sortIcon from "../../../img/sort.svg";
+import { IFilterDropdown } from "../../../interfaces/dropdown";
 
-const SortByStatusDropdown: React.FC = () => {
+const FilterByDateDropdown: React.FC<IFilterDropdown> = ({selectedOptions,setSelectedOptions}) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
 
   const toggleMenu = () => {
     setIsMenuOpen((prev) => !prev);
@@ -22,7 +22,7 @@ const SortByStatusDropdown: React.FC = () => {
   };
 
   return (
-    <div className="relative inline-block text-left text-black">
+    <div className="relative inline-block text-left">
       <div>
         <button
           type="button"
@@ -34,42 +34,42 @@ const SortByStatusDropdown: React.FC = () => {
           <img
             src={sortIcon}
             alt="edit"
-            className="inline h-4 w-4 sm:h-5 sm:w-5 mr-0 lg:mr-2"
+            className="inline h-4 w-4 sm:h-5 sm:w-5  mr-0 lg:mr-2"
           />
-          <div className="hidden sm:inline mr-1">Sort by {` `}</div>
-          <div>Status</div>
+          <div className="hidden sm:inline mr-1">Filter by {` `}</div>
+          <div>Date</div>
         </button>
       </div>
 
       {isMenuOpen && (
-        <div className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+        <div className="text-black absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
           <div className="py-1" role="none">
             <label className="flex items-center px-4 py-2 text-sm">
               <input
                 type="checkbox"
                 className="form-checkbox h-4 w-4 text-blue-500"
-                checked={selectedOptions.includes("To do")}
-                onChange={() => handleOptionClick("To do")}
+                checked={selectedOptions.includes("Due Today")}
+                onChange={() => handleOptionClick("Due Today")}
               />
-              <span className="ml-2">To do</span>
+              <span className="ml-2">Due Today</span>
             </label>
             <label className="flex items-center px-4 py-2 text-sm">
               <input
                 type="checkbox"
                 className="form-checkbox h-4 w-4 text-blue-500"
-                checked={selectedOptions.includes("In Progress")}
-                onChange={() => handleOptionClick("In Progress")}
+                checked={selectedOptions.includes("Over Due")}
+                onChange={() => handleOptionClick("Over Due")}
               />
-              <span className="ml-2">In Progress</span>
+              <span className="ml-2">Over Due</span>
             </label>
             <label className="flex items-center px-4 py-2 text-sm">
               <input
                 type="checkbox"
                 className="form-checkbox h-4 w-4 text-blue-500"
-                checked={selectedOptions.includes("Done")}
-                onChange={() => handleOptionClick("Done")}
+                checked={selectedOptions.includes("Due in Future")}
+                onChange={() => handleOptionClick("Due in Future")}
               />
-              <span className="ml-2">Done</span>
+              <span className="ml-2">Due in Future</span>
             </label>
           </div>
         </div>
@@ -78,4 +78,4 @@ const SortByStatusDropdown: React.FC = () => {
   );
 };
 
-export default SortByStatusDropdown;
+export default FilterByDateDropdown;
