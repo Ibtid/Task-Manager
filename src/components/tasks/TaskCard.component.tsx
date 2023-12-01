@@ -18,7 +18,7 @@ export const TaskCard: FC<ITaskCardProps> = ({id,title,description,status,due}) 
   let navigate = useNavigate()
   return (
     <Fragment>
-      <div className="bg-slate-50 p-6 rounded-lg shadow-md max-w-lg mx-auto sm:max-w-xl lg:max-w-2xl xl:max-w-3xl w-72 md:w-80 lg:w-96">
+      <div className="flex flex-col justify-between bg-slate-50 p-6 rounded-lg shadow-md max-w-lg mx-auto sm:max-w-xl lg:max-w-2xl xl:max-w-3xl w-72 md:w-80 lg:w-96">
         <div className="flex flex-col items-center justify-between lg:flex-row mb-6">
           <div className="text-2xl lg:text-2xl font-semibold mb-4 lg:mb-0">{title}</div>
           <div className="flex items-center text-xs md:text-sm">
