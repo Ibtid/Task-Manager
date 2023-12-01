@@ -26,9 +26,7 @@ export const TaskCard: FC<ITaskCardProps> = ({
   const [showModal, setShowModal] = useState<Boolean>(false);
   const [loading, setLoading] = useState<Boolean>(false);
 
-  const handleSubmit = async () => {
-
-    
+  const confirmDelete = async () => {
       setLoading(true)
       let bodyForDummyApi = {
         userId: 1,
@@ -42,7 +40,7 @@ export const TaskCard: FC<ITaskCardProps> = ({
       token: '',})
       console.log(response);
       setShowModal(false)
-      if(response.data){
+      if(response.data!=null){
         dispatchTodo(deleteTodo(id));
         navigate(UiPaths.TasksList)
       }
@@ -54,9 +52,9 @@ export const TaskCard: FC<ITaskCardProps> = ({
       {loading && <Spinkit/>}
       {showModal && (
         <ConfirmationCardModal
-          taskName={"Gardening"}
+          taskName={title}
           onConfirm={() => {
-            handleSubmit()
+           confirmDelete()
           }}
           onCancel={() => {
             setShowModal(false);

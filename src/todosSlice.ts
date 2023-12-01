@@ -55,7 +55,7 @@ const todosSlice = createSlice({
         description: action.payload.description,
         due: action.payload.due,
       };
-      state.selectedTask = taskToBeEdited
+      state.selectedTask = taskToBeEdited;
     },
     addTodo: (state, action: PayloadAction<ITask>) => {
       const newTodo: ITask = {
@@ -77,7 +77,11 @@ const todosSlice = createSlice({
       }
     },
     deleteTodo: (state, action: PayloadAction<number>) => {
-      state.todos = state.todos.filter((todo) => todo.id !== action.payload);
+      const deletedTodoId = action.payload;
+
+      // Use filter to create a new array without the deleted todo
+      const task = state.todos.filter((todo) => todo.id === deletedTodoId);
+      state.todos.pop()
     },
   },
 });

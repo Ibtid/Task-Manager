@@ -10,7 +10,7 @@ import actions from "../../dispatch/actions";
 import { ITask } from "../../interfaces/task";
 
 export const TaskList: FC = () => {
-  const todos = useSelector(selectTodos);
+  let todos:ITask[] = useSelector(selectTodos);
   const [tasks, setTasks] = useState<ITask[]>([])
   const [loading, setLoading] = useState<Boolean>(false)
 
@@ -32,7 +32,7 @@ export const TaskList: FC = () => {
       }
       setLoading(false)
     })();
-  }, []);
+  }, [todos]);
 
   return (
     <Fragment>
