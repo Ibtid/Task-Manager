@@ -3,21 +3,7 @@ import ApiPaths from "../paths/apiPaths";
 import { urls } from "../paths/baseUrlPaths";
 import { getAxiosOptions } from "./getAxiosOptions";
 import actions from "./actions";
-
-interface IHeaderParams {
-  routeType?: string;
-}
-
-interface IDispatchOptions {
-  action: string;
-  headerParams?: IHeaderParams;
-  body?: Record<string, any>;
-  token?: string;
-}
-
-interface IError {
-  message: String;
-}
+import { IDispatchOptions, IError } from "../interfaces/dispatch";
 
 
 const dispatch = async ({

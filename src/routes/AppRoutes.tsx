@@ -1,7 +1,6 @@
-import { Fragment, lazy } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import UiPaths from "../paths/uiPaths";
-import Navbar from "../components/common/navbar/Navbar";
+import Layout from "../components/common/layout/Layout";
 import TasksPage from "../pages/Tasks";
 import AddTaskPage from "../pages/AddTask";
 import NotFoundPage from "../pages/NotFound";
@@ -10,7 +9,7 @@ import EditTaskPage from "../pages/EditTask";
 const AppRoutes = () => {
   return (
     <Routes>
-      <Route path="/" element={<Navbar />}>
+      <Route path="/" element={<Layout />}>
         <Route index element={<Navigate to={UiPaths.TasksList} />} />
         <Route path={UiPaths.TasksList} element={<TasksPage />} />
         <Route path={UiPaths.AddTask} element={<AddTaskPage />} />

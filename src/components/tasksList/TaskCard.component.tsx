@@ -1,5 +1,5 @@
 import { FC, Fragment, useState } from "react";
-import calender from "../../img/calender.svg";
+import calender from "../../images/calender.svg";
 import EditButton from "../common/buttons/edit.buttons";
 import DeleteButton from "../common/buttons/delete.button";
 import UiPaths from "../../paths/uiPaths";
@@ -7,8 +7,7 @@ import { useNavigate } from "react-router-dom";
 import StatusComponent from "../common/status/Status.component";
 import { ITask, ITaskCardProps } from "../../interfaces/task";
 import { useDispatch } from "react-redux";
-import { deleteTodo, selectTask, selectedTask } from "../../todosSlice";
-import { useSelector } from "react-redux";
+import { deleteTodo, selectTask } from "../../todosSlice";
 import { ConfirmationCardModal, Spinkit } from "../../modals";
 import dispatch from "../../dispatch/dispatch";
 import actions from "../../dispatch/actions";
@@ -27,34 +26,35 @@ export const TaskCard: FC<ITaskCardProps> = ({
   const [loading, setLoading] = useState<Boolean>(false);
 
   const confirmDelete = async () => {
-      setLoading(true)
-      let bodyForDummyApi = {
-        userId: 1,
-        id: 1,
-        title: "delectus aut autem",
-        completed: false,
-      };
-      let response =await dispatch({ action: actions.deleteTask,
+    setLoading(true);
+    let bodyForDummyApi = {
+      userId: 1,
+      id: 1,
+      title: "delectus aut autem",
+      completed: false,
+    };
+    let response = await dispatch({
+      action: actions.deleteTask,
       headerParams: {},
       body: bodyForDummyApi,
-      token: '',})
-      console.log(response);
-      setShowModal(false)
-      if(response.data!=null){
-        dispatchTodo(deleteTodo(id));
-        navigate(UiPaths.TasksList)
-      }
-      setLoading(false)
-    
+      token: "",
+    });
+    console.log(response);
+    setShowModal(false);
+    if (response.data != null) {
+      dispatchTodo(deleteTodo(id));
+      navigate(UiPaths.TasksList);
+    }
+    setLoading(false);
   };
   return (
     <Fragment>
-      {loading && <Spinkit/>}
+      {loading && <Spinkit />}
       {showModal && (
         <ConfirmationCardModal
           taskName={title}
           onConfirm={() => {
-           confirmDelete()
+            confirmDelete();
           }}
           onCancel={() => {
             setShowModal(false);
@@ -87,7 +87,7 @@ export const TaskCard: FC<ITaskCardProps> = ({
           <StatusComponent status={status} />
           <EditButton
             onClick={() => {
-              console.log(due)
+              console.log(due);
               let taskToBeEdited: ITask = {
                 title: title,
                 description: description,

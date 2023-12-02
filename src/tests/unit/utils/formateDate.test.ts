@@ -1,4 +1,4 @@
-import { formatDate } from '../../utils/formateDate';
+import { formatDate } from '../../../utils/formateDate';
 
 describe('formatDate function', () => {
   test('should format the date correctly', () => {

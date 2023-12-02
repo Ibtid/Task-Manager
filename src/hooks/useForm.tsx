@@ -1,24 +1,6 @@
 import { useState, ChangeEvent } from 'react';
+import { FormData, FormErrors, FormHook } from '../interfaces/form';
 
-interface FormData {
-  title: string;
-  description: string;
-  selectedDate: string;
-  status: "todo" | "completed" | "in progress";
-}
-
-interface FormErrors {
-  title: string;
-  description: string;
-  selectedDate: string;
-}
-
-interface FormHook {
-  formData: FormData;
-  formErrors: FormErrors;
-  handleChange: (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => void;
-  validateForm: () => boolean;
-}
 
 const useForm = (initialState: FormData): FormHook => {
   const [formData, setFormData] = useState<FormData>(initialState);

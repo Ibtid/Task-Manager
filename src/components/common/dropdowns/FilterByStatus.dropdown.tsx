@@ -1,9 +1,11 @@
 import React, { useState } from "react";
-import sortIcon from "../../../img/sort.svg";
+import sortIcon from "../../../images/sort.svg";
 import { IFilterDropdown } from "../../../interfaces/dropdown";
 
-
-const FilterByStatusDropdown: React.FC<IFilterDropdown> = ({selectedOptions,setSelectedOptions}) => {
+const FilterByStatusDropdown: React.FC<IFilterDropdown> = ({
+  selectedOptions,
+  setSelectedOptions,
+}) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {

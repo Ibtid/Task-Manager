@@ -1,11 +1,6 @@
 import React from "react";
 import "./ConfirmationCard.css";
-
-interface IConfirmationCardProps {
-  taskName: string;
-  onConfirm: () => void;
-  onCancel: () => void;
-}
+import { IConfirmationCardProps } from "../../interfaces/confirmationCard";
 
 export const ConfirmationCardModal: React.FC<IConfirmationCardProps> = ({
   taskName,

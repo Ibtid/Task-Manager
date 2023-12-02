@@ -1,6 +1,6 @@
 import { FC } from "react";
 import ReactDOM from "react-dom";
-import onGoingIcon from "../../img/ongoing.svg";
+import onGoingIcon from "../../images/ongoing.svg";
 
 import "./Spinkit.css";
 

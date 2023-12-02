@@ -5,7 +5,7 @@ import UiPaths from "../../../paths/uiPaths";
 import { Outlet, Link } from "react-router-dom";
 import BackButton from "../buttons/back.button";
 
-const Navbar = () => {
+const Layout = () => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
   console.log(pathname);
@@ -28,4 +28,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default Layout;

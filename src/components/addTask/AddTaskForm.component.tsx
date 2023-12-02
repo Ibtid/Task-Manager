@@ -5,7 +5,7 @@ import actions from "../../dispatch/actions";
 import { Spinkit } from "../../modals";
 import { useDispatch } from "react-redux";
 import { ITask } from "../../interfaces/task";
-import { addTodo } from '../../todosSlice';
+import { addTodo } from "../../todosSlice";
 import { useNavigate } from "react-router-dom";
 import UiPaths from "../../paths/uiPaths";
 
@@ -17,45 +17,46 @@ const AddTaskForm: FC = () => {
     selectedDate: "",
     status: "todo",
   });
-  const [loading, setLoading] = useState<Boolean>(false)
-  const navigate =useNavigate()
+  const [loading, setLoading] = useState<Boolean>(false);
+  const navigate = useNavigate();
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
 
     if (validateForm()) {
-      setLoading(true)
-      let newTodo:ITask={
-        title:formData.title,
-        description:formData.description,
-        status:formData.status,
-        id:9,
-        due:formData.selectedDate
-
-      }
+      setLoading(true);
+      let newTodo: ITask = {
+        title: formData.title,
+        description: formData.description,
+        status: formData.status,
+        id: 9,
+        due: formData.selectedDate,
+      };
       let bodyForDummyApi = {
         userId: 1,
         id: 1,
         title: "delectus aut autem",
         completed: false,
       };
-      let response =await dispatch({ action: actions.addTask,
-      headerParams: {},
-      body: bodyForDummyApi,
-      token: '',})
+      let response = await dispatch({
+        action: actions.addTask,
+        headerParams: {},
+        body: bodyForDummyApi,
+        token: "",
+      });
       console.log(response);
-      if(response.data){
+      if (response.data) {
         dispatchTodo(addTodo(newTodo));
-        navigate(UiPaths.TasksList)
+        navigate(UiPaths.TasksList);
       }
-      setLoading(false)
+      setLoading(false);
     } else {
       console.log("Form is not valid");
     }
   };
   return (
     <Fragment>
-      {loading && <Spinkit/>}
+      {loading && <Spinkit />}
       <div className="flex items-center justify-center min-h-screen">
         <div className="bg-slate-50 shadow-md rounded-md p-8 w-full max-w-md mb-80 sm:mb-20">
           <h2 className="text-2xl font-bold mb-4">Add Task</h2>

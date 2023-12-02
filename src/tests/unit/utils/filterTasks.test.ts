@@ -1,5 +1,5 @@
-import { filterTasks } from '../../utils/filterTasks'; // Replace with the actual module name
-import { ITask } from '../../interfaces/task';
+import { filterTasks } from '../../../utils/filterTasks'; // Replace with the actual module name
+import { ITask } from '../../../interfaces/task';
 
 describe('filterTasks', () => {
   const mockTasks: ITask[] = [

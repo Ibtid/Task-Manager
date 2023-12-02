@@ -1,4 +1,4 @@
-import axios, { AxiosRequestConfig } from "axios";
+import { AxiosRequestConfig } from "axios";
 
 export const getAxiosOptions = (
     method: AxiosRequestConfig["method"],
