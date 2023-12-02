@@ -5,7 +5,6 @@ export const filterTasks = (
   selectedStatusOptions: string[],
   selectedDateOptions: string[]
 ): ITask[] => {
-  console.log(selectedDateOptions);
   return todos.filter((todo) => {
     //Filter based on status
     const statusMatch = selectedStatusOptions.includes(todo.status);

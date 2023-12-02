@@ -39,7 +39,6 @@ export const TaskCard: FC<ITaskCardProps> = ({
       body: bodyForDummyApi,
       token: "",
     });
-    console.log(response);
     setShowModal(false);
     if (response.data != null) {
       dispatchTodo(deleteTodo(id));
@@ -87,7 +86,6 @@ export const TaskCard: FC<ITaskCardProps> = ({
           <StatusComponent status={status} />
           <EditButton
             onClick={() => {
-              console.log(due);
               let taskToBeEdited: ITask = {
                 title: title,
                 description: description,

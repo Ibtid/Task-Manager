@@ -45,7 +45,6 @@ const EditTaskForm: FC = () => {
         body: bodyForDummyApi,
         token: "",
       });
-      console.log(response);
       if (response.data) {
         dispatchTodo(editTodo(editedTodo));
         navigate(UiPaths.TasksList);

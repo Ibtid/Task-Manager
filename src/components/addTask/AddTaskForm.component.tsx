@@ -45,7 +45,6 @@ const AddTaskForm: FC = () => {
         body: bodyForDummyApi,
         token: "",
       });
-      console.log(response);
       if (response.data) {
         dispatchTodo(addTodo(newTodo));
         navigate(UiPaths.TasksList);
