@@ -40,8 +40,11 @@ export const TaskList: FC = () => {
               filterTasks(todos, selectedStatusOptions, selectedDateOptions)
             );
           }
+        }else{
+          alert('Something went wrong')
         }
       } catch (error) {
+        alert('Something went wrong')
         console.error("Error fetching tasks:", error);
       }
       setLoading(false);
@@ -77,6 +80,7 @@ export const TaskList: FC = () => {
             due={task.due}
           />
         ))}
+        {tasks.length===0 && !loading && <div className="text-3xl">No tasks found</div>}
       </div>
     </Fragment>
   );

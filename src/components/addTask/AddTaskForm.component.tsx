@@ -48,6 +48,8 @@ const AddTaskForm: FC = () => {
       if (response.data) {
         dispatchTodo(addTodo(newTodo));
         navigate(UiPaths.TasksList);
+      }else{
+        alert('Something went wrong')
       }
       setLoading(false);
     } else {

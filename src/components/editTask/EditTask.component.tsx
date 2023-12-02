@@ -48,6 +48,8 @@ const EditTaskForm: FC = () => {
       if (response.data) {
         dispatchTodo(editTodo(editedTodo));
         navigate(UiPaths.TasksList);
+      }else{
+        alert('Something went wrong')
       }
       setLoading(false);
     } else {
