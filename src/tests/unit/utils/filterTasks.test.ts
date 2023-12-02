@@ -1,4 +1,4 @@
-import { filterTasks } from '../../../utils/filterTasks'; // Replace with the actual module name
+import { filterTasks } from '../../../utils/filterTasks';
 import { ITask } from '../../../interfaces/task';
 
 describe('filterTasks', () => {
@@ -46,6 +46,4 @@ describe('filterTasks', () => {
 
     expect(result).toHaveLength(0);
   });
-
-  // Add more test cases as needed
 });
