@@ -29,7 +29,7 @@ const FilterByDateDropdown: React.FC<IFilterDropdown> = ({
       <div>
         <button
           type="button"
-          className="flex items-center bg-blue-500 text-white font-semibold py-2 px-2 sm:px-3 rounded cursor-pointer ml-2 mr-2 mb-2 sm:mb-0 sm:mr-4"
+          className={`flex items-center ${isMenuOpen?"bg-blue-700": "bg-blue-500"} text-white font-semibold py-2 px-2 sm:px-3 rounded cursor-pointer ml-2 mr-2 mb-2 sm:mb-0 sm:mr-4`}
           onClick={toggleMenu}
           aria-expanded={isMenuOpen}
           aria-haspopup="true"
