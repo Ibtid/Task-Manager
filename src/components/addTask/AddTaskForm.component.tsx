@@ -8,6 +8,7 @@ import { ITask } from "../../interfaces/task";
 import { addTodo } from "../../todosSlice";
 import { useNavigate } from "react-router-dom";
 import UiPaths from "../../paths/uiPaths";
+import { generateUniqueNumber } from "../../utils/generateUniqueId";
 
 const AddTaskForm: FC = () => {
   const dispatchTodo = useDispatch();
@@ -29,7 +30,7 @@ const AddTaskForm: FC = () => {
         title: formData.title,
         description: formData.description,
         status: formData.status,
-        id: 9,
+        id: generateUniqueNumber(),
         due: formData.selectedDate,
       };
       let bodyForDummyApi = {
