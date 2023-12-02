@@ -21,7 +21,6 @@ export function formatDate(inputDate: string): string {
     "Dec",
   ];
 
-  // Format the date string
   const formattedString: string = `${
     monthNames[formattedDate.getMonth()]
   } ${formattedDate.getDate()}, ${formattedDate.getFullYear()}`;
