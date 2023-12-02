@@ -28,7 +28,7 @@ const initialState: ITasksState = {
     {
       id: 4,
       title: "Do Homework4",
-      description: "I need to complete by Homework by saturday",
+      description: "I need to complete my Homework.",
       status: "completed",
       due: "2023-02-02",
     },
