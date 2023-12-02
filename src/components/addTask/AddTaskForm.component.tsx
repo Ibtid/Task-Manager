@@ -5,7 +5,7 @@ import actions from "../../dispatch/actions";
 import { Spinkit } from "../../modals";
 import { useDispatch } from "react-redux";
 import { ITask } from "../../interfaces/task";
-import { addTodo } from "../../todosSlice";
+import { addTodo } from "../../redux/todosSlice";
 import { useNavigate } from "react-router-dom";
 import UiPaths from "../../paths/uiPaths";
 import { generateUniqueNumber } from "../../utils/generateUniqueId";

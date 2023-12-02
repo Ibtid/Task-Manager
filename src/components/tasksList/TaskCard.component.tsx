@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import StatusComponent from "../common/status/Status.component";
 import { ITask, ITaskCardProps } from "../../interfaces/task";
 import { useDispatch } from "react-redux";
-import { deleteTodo, selectTask } from "../../todosSlice";
+import { deleteTodo, selectTask } from "../../redux/todosSlice";
 import { ConfirmationCardModal, Spinkit } from "../../modals";
 import dispatch from "../../dispatch/dispatch";
 import actions from "../../dispatch/actions";

@@ -4,7 +4,7 @@ import FilterByStatusDropdown from "../common/dropdowns/FilterByStatus.dropdown"
 import FilterByDateDropdown from "../common/dropdowns/FilterByDate.dropdown";
 import { Spinkit } from "../../modals/index";
 import { useSelector } from "react-redux";
-import { selectTodos } from "../../todosSlice";
+import { selectTodos } from "../../redux/todosSlice";
 import dispatch from "../../dispatch/dispatch";
 import actions from "../../dispatch/actions";
 import { ITask } from "../../interfaces/task";

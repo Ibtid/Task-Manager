@@ -1,6 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { act } from "react-dom/test-utils";
-import { ITask, ITasksState } from "./interfaces/task";
+import { ITask, ITasksState } from "../interfaces/task";
 
 const initialState: ITasksState = {
   selectedTask: null,

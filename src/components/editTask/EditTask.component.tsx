@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { ITask } from "../../interfaces/task";
 import dispatch from "../../dispatch/dispatch";
 import actions from "../../dispatch/actions";
-import { editTodo, selectedTask } from "../../todosSlice";
+import { editTodo, selectedTask } from "../../redux/todosSlice";
 import UiPaths from "../../paths/uiPaths";
 import { useSelector } from "react-redux";
 import { Spinkit } from "../../modals";
