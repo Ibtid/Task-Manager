@@ -39,18 +39,24 @@ const EditTaskForm: FC = () => {
         title: "delectus aut autem",
         completed: false,
       };
-      let response = await dispatch({
-        action: actions.editTask,
-        headerParams: {},
-        body: bodyForDummyApi,
-        token: "",
-      });
-      if (response.data) {
-        dispatchTodo(editTodo(editedTodo));
-        navigate(UiPaths.TasksList);
-      }else{
+
+      try {
+        let response = await dispatch({
+          action: actions.editTask,
+          headerParams: {},
+          body: bodyForDummyApi,
+          token: "",
+        });
+        if (response.data) {
+          dispatchTodo(editTodo(editedTodo));
+          navigate(UiPaths.TasksList);
+        }else{
+          alert('Something went wrong')
+        }
+      } catch (error) {
         alert('Something went wrong')
       }
+
       setLoading(false);
     } else {
       console.log("Form is not valid");

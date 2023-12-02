@@ -33,17 +33,22 @@ export const TaskCard: FC<ITaskCardProps> = ({
       title: "delectus aut autem",
       completed: false,
     };
-    let response = await dispatch({
-      action: actions.deleteTask,
-      headerParams: {},
-      body: bodyForDummyApi,
-      token: "",
-    });
-    setShowModal(false);
-    if (response.data != null) {
-      dispatchTodo(deleteTodo(id));
-      navigate(UiPaths.TasksList);
+    try {
+      let response = await dispatch({
+        action: actions.deleteTask,
+        headerParams: {},
+        body: bodyForDummyApi,
+        token: "",
+      });
+      setShowModal(false);
+      if (response.data != null) {
+        dispatchTodo(deleteTodo(id));
+        navigate(UiPaths.TasksList);
+      }
+    } catch (error) {
+      alert('Something went wrong')
     }
+    
     setLoading(false);
   };
   return (
